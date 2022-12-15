@@ -5,6 +5,7 @@ import './App.css'
 
 
 function App() {
+  const numersArray = [10,20,30]
   /* 
   if (100>200) {
      return (
@@ -28,7 +29,16 @@ return (
     {
       /*dentro del jsx solo funciona el: Operador tenario, y operadores corto circuito*/
 
-      /*condicion ? se devuelve si la condicion se cumbple : si la condicion no se cumple 
+      /*OPERADOR TERNARIO-->condicion ? se devuelve si la condicion se cumbple : si la condicion no se cumple 
+        OPERADOR CORTO CIRCUITO-->  &&-->AND    ||--OR
+        TRUE && TRUE --> TRUE
+        TRUE || FALSE --> TRUE
+
+        Operdor  de corto cicuito && (and)
+        devuelve el primer dato falsy que se encuentra de izq a der
+        Niguno de los datos es falsy, devuelve el de la derecha o el ultimo
+        NULL && 100 --> FALSE
+
       
       TRUTHYS--> Se comportan como boleanos true
 
@@ -62,9 +72,11 @@ return (
       {
         100!==200 ? <h1>  la condicion se cumple</h1> : <h1> la condicion no se cumple</h1>
       }
-    
 
-    
+      {
+        numersArray.length > 0 && <h2> {numersArray[0]} </h2>
+      }  
+        
   </div>
 )
     }
