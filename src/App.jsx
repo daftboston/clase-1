@@ -1,61 +1,22 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
-import UserCard from './components/UserCard';
-import ListGroceries from './components/ListGroceries';
+import './components/Loader'
+
 
 
 function App() {
   const [count, setCount] = useState(0)
 
+  let isLoading = false
+
   return (
     <div className="App">
-      <h1>Mi primer proyecto de react</h1>
-      {/*
-      generar un pequeño contenedor /card
-      titulo su nombre
-      ua lista con :
-      pelicula favorita
-      banda favorita  */}
-      <UserCard
-      name = "Daniel"
-      movie = "Avatar"
-      band = "Stone Temple Pilots"/>
-      <UserCard
-      name = "jerry"
-      movie = "cars"
-      band = "fnaf"      
-      />
-      <UserCard
-       name = "dely"
-       movie = "bots"
-       band = "toto"      
-      />
-
-      <ListGroceries
-      name= "Leche"
-      quant= "2"
-      price= "3.00"      
-      />
-
-     <ListGroceries
-      name= "Pan"
-      quant= "10"
-      price= "0.50"      
-      />
-
-
-     <ListGroceries
-      name= "Huevos"
-      quant= "2"
-      price= "0.50"      
-      />
-
-     <ListGroceries
-      name= "Queso"
-      quant= "1"
-      price= "3.00"      
-      />
+      <Loader></Loader>
+      
+      <h1>Titulo principal</h1>
+      
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sit exercitationem dolore beatae accusamus dicta voluptatum quo modi alias. Cupiditate cumque vitae dolore hic! Sed et facere placeat magnam quam fugiat inventore dolore doloremque enim fugit? Delectus possimus accusamus iusto saepe expedita. Tempore quidem dolorem officiis, dicta error voluptates ex quis eius dolor necessitatibus asperiores quos ducimus qui quam voluptate reiciendis culpa? Vel voluptate, maiores distinctio laudantium repudiandae explicabo dolorum asperiores quasi delectus accusamus quo culpa odit, praesentium sunt ullam nihil. Sed aliquid consectetur recusandae libero ratione quas, reprehenderit quae maxime mollitia corporis voluptatem sequi, cumque aperiam voluptas ab ullam itaque?</p>
 
     
 
