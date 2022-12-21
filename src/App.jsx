@@ -1,80 +1,58 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import './App.css'
+import Button from './components/Button';
+import Input from './components/Input';
+
 
 
 
 function App() {
-  const numersArray = [10,20,30]
-  /* 
-  if (100>200) {
-     return (
-      <div className='App'>
-        <h1>La condicion se cumplio</h1>
-      </div>
-     )
-    
-  } else {
-    return(
-    <div className='App'>
-        <h1>La condicion NO se cumple</h1>
-    </div>)
-  } 
-  */
+  
+  const [likes, setLikes] = useState(0)
+  const studentsNames = [ "Joyner", "Gabriel", "Romel", "Felipe", "Maria", "Franco", "Mercedes" ]
+
+  const [ text, setText]= useState ("")
+
+  const formateText =(text)=>{
+    const newTest = text.toUpperCase()
+    setText (newTest)
+  }
+
+ 
 return (
+  
   <div className='App'>
-    {
-      /*dentro del jsx solo funciona el: Operador tenario, y operadores corto circuito*/
+    <Button buttonName="getinfo"
+    liftingData={(info ) => alert (info)}/>
 
-      /*OPERADOR TERNARIO-->condicion ? se devuelve si la condicion se cumbple : si la condicion no se cumple 
-        OPERADOR CORTO CIRCUITO-->  &&-->AND    ||--OR
-        TRUE && TRUE --> TRUE
-        TRUE || FALSE --> TRUE
 
-        Operdor  de corto cicuito && (and)
-        devuelve el primer dato falsy que se encuentra de izq a der
-        Niguno de los datos es falsy, devuelve el de la derecha o el ultimo
-        NULL && 100 --> FALSE
 
+<h2> Likes : {likes}</h2>
+    <Button buttonName="like"
+    liftingData={() => setLikes (likes +1)}/>
+    <Button buttonName="dislike"
+    liftingData={() => setLikes (likes -1)}/>
+    <Button buttonName="Re-like"
+    liftingData={() => setLikes (likes +2)}/>
+    <Button buttonName="getinfo"
+    liftingData={(info ) => alert (info)}/>
+    
+    <Button buttonName="Ejercicio"
+    textContent="Hola Daniel, bienvenido a tu propia clase"
+    liftingData={(info)=>alert(info)}/>
+    <Button buttonName="Cancelar"/>
+    <div>
+      <h1>contenido del input: {text}</h1>
+      <Input
+      getInputValue ={(data)=> formateText(data)}/>
       
-      TRUTHYS--> Se comportan como boleanos true
-
-      []-->arreglos vacios
-
-      {}--> objetos vacios
-
-      -200 --> numeros negativos
-
-      "False"--> la palabra false
-
-      " "--> cadena de texto que tenga vacios
-
-
-
-
-      FALSIES--> Se comportan como boleanos false
-      ""-->cadena de texto sin vacios
-      undefined
-
-      null
-
-      NaN
-
-      0
-
-      False
       
-      */
-      }
-      {
-        100!==200 ? <h1>  la condicion se cumple</h1> : <h1> la condicion no se cumple</h1>
-      }
-
-      {
-        numersArray.length > 0 && <h2> {numersArray[0]} </h2>
-      }  
-        
+    </div>
+   
+     
   </div>
+  
 )
     }
 
