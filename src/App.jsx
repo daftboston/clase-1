@@ -1,59 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+
 import './App.css'
-import Button from './components/Button';
-import Input from './components/Input';
-
-
+import axios from 'axios'
+import {useState, useEffect} from 'react'
+import Pokemon from './components/Pokemon'
+import Rick from './components/Rick'
 
 
 function App() {
-  
-  const [likes, setLikes] = useState(0)
-  const studentsNames = [ "Joyner", "Gabriel", "Romel", "Felipe", "Maria", "Franco", "Mercedes" ]
+  // baseUrl/endpoint?parametro=valor&parametroDos=nuevoValor
+  //https://pokeapi.co/api/v2/location/{id or name}/
+  //https://pokeapi.co/api/v2/ability/{id or name}/
 
-  const [ text, setText]= useState ("")
+  //const [pokemonData, setPokemonData] = useState({});
+  const [rickData, setRickData] = useState({})
 
-  const formateText =(text)=>{
-    const newTest = text.toUpperCase()
-    setText (newTest)
-  }
+ /*  useEffect(() => {
+    /*
+      axios
+      .metodo("url")
+      .then( respuesta => console.log(respuesta) )
+      .catch( error => console.error(error) )
+    */
 
- 
-return (
-  
-  <div className='App'>
-    <Button buttonName="getinfo"
-    liftingData={(info ) => alert (info)}/>
+    // axios
+    //  .get("https://pokeapi.co/api/v2/pokemon/ditto/")
+     // .then((resp) => setPokemonData(resp.data))
+    //  .catch((error) => console.error(error));
+ // }, []);
 
 
+  useEffect(()=>{
+    axios
+    .get("https://rickandmortyapi.com/api/character/11")
+    .then(resp => setRickData(resp.data))
+    .catch(error=> console.error(error));
+ },[]);
 
-<h2> Likes : {likes}</h2>
-    <Button buttonName="like"
-    liftingData={() => setLikes (likes +1)}/>
-    <Button buttonName="dislike"
-    liftingData={() => setLikes (likes -1)}/>
-    <Button buttonName="Re-like"
-    liftingData={() => setLikes (likes +2)}/>
-    <Button buttonName="getinfo"
-    liftingData={(info ) => alert (info)}/>
-    
-    <Button buttonName="Ejercicio"
-    textContent="Hola Daniel, bienvenido a tu propia clase"
-    liftingData={(info)=>alert(info)}/>
-    <Button buttonName="Cancelar"/>
-    <div>
-      <h1>contenido del input: {text}</h1>
-      <Input
-      getInputValue ={(data)=> formateText(data)}/>
+  return (
+    <div className="App">
+      {
+        /*<Pokemon data={pokemonData} />  */
+      }
       
-      
+      <Rick data= {rickData}/>
     </div>
-   
-     
-  </div>
-  
-)
-    }
+  );
+}
 
 export default App
+
+
+
