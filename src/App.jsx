@@ -1,56 +1,70 @@
 
 import { useState } from "react";
-import FormUser from "./components/FormUser";
-import usersData from "./data/userData.js";
-import UsersList from "./components/UsersList";
+import './App.css'
+
+import {HashRouter, Routes, Route, Link } from 'react-router-dom'
+import Home from './pages/Home'
+import Projects from "./pages/Projects";
+import Technologies from "./pages/Technologies";
+import Team from "./pages/Team";
+import TeamDetail from "./pages/TeamDetail"
+
+
+
 
 function App() {
-  const [users, setUsers] = useState(usersData);
-  const [userDataUpdate, setUserDataUpdate] = useState(null);
-  //posibles valores
-  //null -> cuando no haya nada seleccionado
-  //{ name, id... } -> hay un usuario seleccionado
 
-  const addUser = (data) => {
-    setUsers([...users, data]);
-  };
-
-  const deleteUser = (userId) => {
-    //Filtrar a todos los usuarios diferentes al usuario que queremos eliminar
-    //Todos los usuarios que queremos conservar
-
-    const filteredUsers = users.filter((user) => user.id !== userId);
-
-    setUsers(filteredUsers);
-  };
-
-  //Estados no deben mutarse
-
-  const selectUser = (userData) => {
-    setUserDataUpdate(userData);
-  };
-
-  const updateUser = (editedUser) => {
-    const index = users.findIndex((user) => user.id === editedUser.id);
-
-    users[index] = editedUser;
-    setUsers([...users]);
-    setUserDataUpdate(null);
-  };
 
   return (
-    <div className="App">
-      <FormUser
-        createUserData={(data) => addUser(data)}
-        userSelectedData={userDataUpdate}
-        updateUser={updateUser}
-      />
-      <UsersList
-        users={users}
-        deleteUser={deleteUser}
-        selectUser={selectUser}
-      />
-    </div>
+    
+      <HashRouter>
+        <div className="App">
+        <nav>
+          <ul>
+            <li>
+              <Link to= "/"> home</Link>
+            </li>
+            <li>
+              <Link to= "/team"> team</Link>
+            </li>
+            <li>
+              <Link to= "/projects"> projects</Link>
+            </li>
+          </ul>
+          
+          SOY UNA NAV</nav>
+         <Routes>
+
+          {/* <Route path= "url"
+           element={  <Page/>}/> */}
+          
+             <Route 
+             path= "/"
+            element={<Home/>}
+             />
+
+           <Route 
+             path= "/team"
+              element={<Team/>}
+             />
+             <Route 
+             path= "/technologies"
+              element={<Technologies/>}
+             />
+             <Route path= "/projects"
+             element={<Projects/>}
+             />
+
+             <Route
+             path= "/team/:name"
+             element = {<TeamDetail/>}
+             />            
+              
+         </Routes>
+         </div>
+      </HashRouter>
+    
+   
   );
 }
 
