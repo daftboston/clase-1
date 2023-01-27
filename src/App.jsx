@@ -1,71 +1,39 @@
 
-import { useState } from "react";
 import './App.css'
-
-import {HashRouter, Routes, Route, Link } from 'react-router-dom'
-import Home from './pages/Home'
-import Projects from "./pages/Projects";
-import Technologies from "./pages/Technologies";
-import Team from "./pages/Team";
-import TeamDetail from "./pages/TeamDetail"
-
+import {HashRouter, Routes, Route} from "react-router-dom"
+import CarList from './components/CarsList';
+import CarsForm from './components/CarsForm';
+import Spinner from 'react-bootstrap/Spinner';
+import { useSelector } from 'react-redux';
 
 
 
 function App() {
-
-
+  
+const isLoading = useSelector (state => state.isLoading)
   return (
-    
-      <HashRouter>
-        <div className="App">
-        <nav>
-          <ul>
-            <li>
-              <Link to= "/"> home</Link>
-            </li>
-            <li>
-              <Link to= "/team"> team</Link>
-            </li>
-            <li>
-              <Link to= "/projects"> projects</Link>
-            </li>
-          </ul>
-          
-          SOY UNA NAV</nav>
-         <Routes>
+  
+ <div className='App'>
+  
+  {
+     isLoading && (
 
-          {/* <Route path= "url"
-           element={  <Page/>}/> */}
-          
-             <Route 
-             path= "/"
-            element={<Home/>}
-             />
+  <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>
 
-           <Route 
-             path= "/team"
-              element={<Team/>}
-             />
-             <Route 
-             path= "/technologies"
-              element={<Technologies/>}
-             />
-             <Route path= "/projects"
-             element={<Projects/>}
-             />
+)
+}
+   <h1>TABLE
 
-             <Route
-             path= "/team/:name"
-             element = {<TeamDetail/>}
-             />            
-              
-         </Routes>
-         </div>
-      </HashRouter>
-    
-   
-  );
+   </h1>
+
+   <CarsForm></CarsForm>   
+   <CarList></CarList>
+ </div>
+  
+  
+  )
 }
 
 export default App;
