@@ -1,11 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
-import carsSlice from './slices/cars.slice'
-import isLoadingSlice from './slices/isLoading.slice'
-
+import { configureStore } from "@reduxjs/toolkit";
+import isLoadingSlice from "./slices/isLoading.slice";
+import newsSlice from "./slices/news.slice";
 
 export default configureStore({
-    reducer: {
-        cars : carsSlice,
-        isLoading: isLoadingSlice
-    }
-})
+  reducer: {
+    isLoading: isLoadingSlice,
+    news: newsSlice
+  }
+});

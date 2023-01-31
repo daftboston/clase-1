@@ -1,39 +1,32 @@
-
-import './App.css'
-import {HashRouter, Routes, Route} from "react-router-dom"
-import CarList from './components/CarsList';
-import CarsForm from './components/CarsForm';
-import Spinner from 'react-bootstrap/Spinner';
-import { useSelector } from 'react-redux';
-
-
+import "./App.css";
+import { HashRouter, Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Favorites from "./pages/Favorites";
+import Login from "./pages/Login";
+import NewsDetail from "./pages/NewsDetail";
+import NavBar from "./components/Navbar";
+import Container from "react-bootstrap/Container";
+import Loader from "./components/Loader";
+import { useSelector } from "react-redux";
 
 function App() {
-  
-const isLoading = useSelector (state => state.isLoading)
+  const isLoading = useSelector((state) => state.isLoading);
+
   return (
-  
- <div className='App'>
-  
-  {
-     isLoading && (
+    <HashRouter>
+      <NavBar />
+      {isLoading && <Loader />}
 
-  <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>
-
-)
-}
-   <h1>TABLE
-
-   </h1>
-
-   <CarsForm></CarsForm>   
-   <CarList></CarList>
- </div>
-  
-  
-  )
+      <Container className="my-5">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/news/:id" element={<NewsDetail />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/favorites" element={<Favorites />} />
+        </Routes>
+      </Container>
+    </HashRouter>
+  );
 }
 
 export default App;
